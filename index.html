@@ -7,24 +7,22 @@
   <style>
     :root {
       --bg-color: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.75);
+      --card-bg: #1e293b;
       --text-color: #ffffff;
       --btn-bg: #334155;
       --btn-hover: #475569;
       --display-bg: #0f172a;
       --accent-color: #00f6ff;
-      --watermark-color: rgba(0, 246, 255, 0.25);
     }
 
     .light-theme {
       --bg-color: #f1f5f9;
-      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-bg: #ffffff;
       --text-color: #0f172a;
       --btn-bg: #e2e8f0;
       --btn-hover: #cbd5e1;
       --display-bg: #f8fafc;
       --accent-color: #2563eb;
-      --watermark-color: rgba(37, 99, 235, 0.15);
     }
 
     * {
@@ -44,53 +42,29 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    /* CLEAR VISIBLE HEAVEN IN BACKGROUND */
-    .bg-text {
-      position: absolute;
-      top: 5%;
-      font-size: 16vw;
+    /* TOP HEAVEN TITLE */
+    .top-heaven-title {
+      font-size: 42px;
       font-weight: 900;
-      color: var(--watermark-color);
-      text-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
-      user-select: none;
-      z-index: 0;
-      letter-spacing: 8px;
+      color: #00f6ff;
       text-transform: uppercase;
+      letter-spacing: 6px;
       font-family: 'Arial Black', sans-serif;
+      text-shadow: 0 0 10px rgba(0, 246, 255, 0.6), 0 0 20px rgba(0, 246, 255, 0.4);
+      margin-bottom: 15px;
       text-align: center;
     }
 
     .calc-container {
-      position: relative;
-      z-index: 1;
       background: var(--card-bg);
-      backdrop-filter: blur(12px);
       padding: 20px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       width: 100%;
       max-width: 400px;
       border: 1px solid rgba(0, 246, 255, 0.3);
-      overflow: hidden;
-    }
-
-    /* INNER WATERMARK INSIDE CALCULATOR CARD */
-    .inner-watermark {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-25deg);
-      font-size: 50px;
-      font-weight: 900;
-      color: rgba(0, 246, 255, 0.08);
-      font-family: 'Arial Black', sans-serif;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: 5px;
     }
 
     .header {
@@ -123,8 +97,6 @@
       min-height: 70px;
       word-break: break-all;
       border: 1px solid #334155;
-      position: relative;
-      z-index: 2;
     }
 
     .history-box {
@@ -134,16 +106,12 @@
       overflow-y: auto;
       margin-bottom: 10px;
       text-align: right;
-      position: relative;
-      z-index: 2;
     }
 
     .buttons {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      position: relative;
-      z-index: 2;
     }
 
     button {
@@ -168,15 +136,12 @@
 </head>
 <body>
 
-  <!-- Background Glowing Text -->
-  <div class="bg-text">HEAVEN</div>
+  <!-- HEAVEN TEXT WRITTEN AT THE TOP -->
+  <div class="top-heaven-title">HEAVEN</div>
 
   <div class="calc-container">
-    <!-- Inner Diagonal Watermark -->
-    <div class="inner-watermark">HEAVEN</div>
-
     <div class="header">
-      <h3>HEAVEN CALC</h3>
+      <h3>CALCULATOR</h3>
       <button class="theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
     </div>
 
