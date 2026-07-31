@@ -7,12 +7,13 @@
   <style>
     :root {
       --bg-color: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.85); /* Semi-transparent for background text */
+      --card-bg: rgba(30, 41, 59, 0.75);
       --text-color: #ffffff;
       --btn-bg: #334155;
       --btn-hover: #475569;
       --display-bg: #0f172a;
       --accent-color: #00f6ff;
+      --watermark-color: rgba(0, 246, 255, 0.25);
     }
 
     .light-theme {
@@ -23,6 +24,7 @@
       --btn-hover: #cbd5e1;
       --display-bg: #f8fafc;
       --accent-color: #2563eb;
+      --watermark-color: rgba(37, 99, 235, 0.15);
     }
 
     * {
@@ -37,38 +39,58 @@
       background: var(--bg-color);
       color: var(--text-color);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* BACKGROUND HEAVEN TEXT (WATERMARK) */
+    /* CLEAR VISIBLE HEAVEN IN BACKGROUND */
     .bg-text {
       position: absolute;
-      font-size: 18vw; /* Responsive huge text */
+      top: 5%;
+      font-size: 16vw;
       font-weight: 900;
-      color: rgba(0, 246, 255, 0.05); /* Soft cyan watermark */
+      color: var(--watermark-color);
+      text-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
       user-select: none;
       z-index: 0;
-      letter-spacing: 10px;
+      letter-spacing: 8px;
       text-transform: uppercase;
       font-family: 'Arial Black', sans-serif;
+      text-align: center;
     }
 
     .calc-container {
       position: relative;
-      z-index: 1; /* Keeps calculator on top of background text */
+      z-index: 1;
       background: var(--card-bg);
-      backdrop-filter: blur(10px); /* Blur effect over background */
+      backdrop-filter: blur(12px);
       padding: 20px;
       border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       width: 100%;
       max-width: 400px;
-      border: 1px solid rgba(0, 246, 255, 0.2);
+      border: 1px solid rgba(0, 246, 255, 0.3);
+      overflow: hidden;
+    }
+
+    /* INNER WATERMARK INSIDE CALCULATOR CARD */
+    .inner-watermark {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      font-size: 50px;
+      font-weight: 900;
+      color: rgba(0, 246, 255, 0.08);
+      font-family: 'Arial Black', sans-serif;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 5px;
     }
 
     .header {
@@ -101,6 +123,8 @@
       min-height: 70px;
       word-break: break-all;
       border: 1px solid #334155;
+      position: relative;
+      z-index: 2;
     }
 
     .history-box {
@@ -110,12 +134,16 @@
       overflow-y: auto;
       margin-bottom: 10px;
       text-align: right;
+      position: relative;
+      z-index: 2;
     }
 
     .buttons {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     button {
@@ -140,10 +168,13 @@
 </head>
 <body>
 
-  <!-- Background Watermark Text -->
+  <!-- Background Glowing Text -->
   <div class="bg-text">HEAVEN</div>
 
   <div class="calc-container">
+    <!-- Inner Diagonal Watermark -->
+    <div class="inner-watermark">HEAVEN</div>
+
     <div class="header">
       <h3>HEAVEN CALC</h3>
       <button class="theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
@@ -153,7 +184,6 @@
     <div class="display" id="display">0</div>
 
     <div class="buttons">
-      <!-- Scientific Keys -->
       <button class="btn-sci" onclick="calcSci('sin')">sin</button>
       <button class="btn-sci" onclick="calcSci('cos')">cos</button>
       <button class="btn-sci" onclick="calcSci('tan')">tan</button>
